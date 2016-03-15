@@ -1,3 +1,4 @@
+# coding:utf-8 
 from __future__ import unicode_literals
 
 from django.db import models
@@ -12,6 +13,9 @@ class RoutineTask(models.Model):
                                     default=None, related_name='+')
     assigned_to = models.ForeignKey('auth.User', blank=True, null=True,
                                     default=None, related_name='+')
+
+    class Meta:
+        verbose_name_plural = '项目'
 
     def save(self, *args, **kwargs):
         self.create_by = get_current_user()
